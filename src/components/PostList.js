@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
-import NewPost from './NewPost';
+import React from 'react';
 import Post from './Post';
 
-class PostList extends Component{
-	constructor(props){
-		super(props);
-		this.state={
-			posts:[],
-			currentPost:
-				{
-					title:'',
-					author:'',
-					content:'',
-					upVotes:'',
-					downVotes:''
-				}
-		}
-	}
-
-	render(){
+function PostList(props){
 		return(
 			<div>
-			  <NewPost />
+			{
+				props.posts.map((post,index)=>{
+					return (
+					<Post
+						title={post.title}
+						content={post.content}
+						key={index}
+					 />
+					)
+				})
+			}
 			</div>
 		)
-	}
 };
 
 export default PostList;
