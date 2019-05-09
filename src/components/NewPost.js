@@ -10,7 +10,7 @@ function NewPost(props){
 
 	function handleNewPostSubmission(event){
 		event.preventDefault();
-		props.onAddNewPost({id:v4(),title:_title.value, content:_content.value,up:0,down:0,score:0,time: new Moment()})
+		props.onAddNewPost({id:v4(),title:_title.value, content:_content.value,up:0,down:0,score:0,time: new Moment(),timeSinceCreated:'a few seconds'})
 		_title.value='';
 		_content.value='';
 	}

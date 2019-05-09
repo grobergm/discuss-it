@@ -17,7 +17,7 @@ function PostList(props){
 						down={post.down}
 						score={post.score}
 						onUpdateVotes={props.onUpdateVotes}
-						time={post.time}
+						time={post.timeSinceCreated}
 						key={post.id}
 					 />
 					)

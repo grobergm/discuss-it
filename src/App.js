@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import NewPost from './components/NewPost';
 import PostList from './components/PostList';
-import Moment from 'moment';
 
 
 class App extends Component{
   constructor(){
     super();
     this.state={
-      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10, score:90,time:new Moment()}],
+      posts:[],
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);
     this.handleOpenNewPostForm=this.handleOpenNewPostForm.bind(this);
     this.handleUpdateVotes=this.handleUpdateVotes.bind(this);
   }
+
+  componentDidMount(){
+    this.postTimeUpdater=setInterval(()=>this.updatePostWithElapsedTime(),5000)
+  }
+
+  componenWillUnmount(){
+    clearInterval(this.postTimeUpdater);
+  }
+
+  updatePostWithElapsedTime(){
+    let newPosts=this.state.posts.slice();
+    newPosts.forEach(post=>post.timeSinceCreated=(post.time).fromNow(true));
+    this.setState({posts:newPosts});
+  }
+
 
   handleOpenNewPostForm(){
     this.state.newPostFormOpen ? this.setState({newPostFormOpen:false}) : this.setState({newPostFormOpen:true});
