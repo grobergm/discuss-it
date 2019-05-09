@@ -6,7 +6,7 @@ class App extends Component{
   constructor(){
     super();
     this.state={
-      posts:[],
+      posts:[{title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',upVotes:100, downVotes:10}],
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);

@@ -11,6 +11,8 @@ function PostList(props){
 					<Post
 						title={post.title}
 						content={post.content}
+						upVotes={post.upVotes}
+						downVotes={post.downVotes}
 						key={index}
 					 />
 					)
