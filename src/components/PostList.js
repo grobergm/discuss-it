@@ -7,7 +7,7 @@ function PostList(props){
 	return(
 		<div>
 			{
-				props.posts.map((post,index)=>{
+				props.posts.map(post=>{
 					return (
 					<Post
 						id={post.id}
@@ -17,7 +17,8 @@ function PostList(props){
 						down={post.down}
 						score={post.score}
 						onUpdateVotes={props.onUpdateVotes}
-						key={index}
+						time={post.time}
+						key={post.id}
 					 />
 					)
 				})

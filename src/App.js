@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import NewPost from './components/NewPost';
 import PostList from './components/PostList';
+import Moment from 'moment';
+
 
 class App extends Component{
   constructor(){
     super();
     this.state={
-      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10, score:90}],
+      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10, score:90,time:new Moment()}],
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);

@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Moment from 'moment';
+
 
 function Post(props){
 	const flex={
@@ -15,6 +17,11 @@ function Post(props){
 		margin:'0.25rem',
 		fontSize:'1.5rem'
 	}
+
+	function displayTimeOpen(timeOpen){
+		return timeOpen.from(new Moment(),true);
+	}
+
 	return(
 		<div style={flex}>
 			<div style={votes}>
@@ -30,6 +37,7 @@ function Post(props){
 			<div>
 				<h1>{props.title}</h1>
 				<p style={{textAlign:'justify'}}>{props.content}</p>
+				<p>Posted {displayTimeOpen(props.time)} ago</p>
 			</div>
 		</div>
 		)
@@ -42,6 +50,7 @@ Post.propTypes={
 	up:PropTypes.number.isRequired,
 	down:PropTypes.number.isRequired,
 	score: PropTypes.number.isRequired,
+	time: PropTypes.instanceOf(Moment).isRequired,
 	onUpdateVotes: PropTypes.func.isRequired
 }
 
