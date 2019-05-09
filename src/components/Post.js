@@ -4,7 +4,14 @@ import Moment from 'moment';
 
 
 function Post(props){
-	const flex={
+	
+	const postLayout={
+		border:'1px solid black',
+		display:'flex',
+		alignItems:'center',
+		padding:'1rem'
+	}
+	const voteLayout={
 		display:'flex',
 		alignItems:'center'
 	}
@@ -23,13 +30,13 @@ function Post(props){
 	}
 
 	return(
-		<div style={flex}>
+		<div style={postLayout}>
 			<div style={votes}>
-				<div style={flex}>
+				<div style={voteLayout}>
 					<i onClick={()=>props.onUpdateVotes('up',props.id)} style={voteIcon} className="fas fa-arrow-alt-circle-up"></i>
 					<p>{props.up}</p>
 				</div>
-				<div style={flex}>
+				<div style={voteLayout}>
 					<i onClick={()=>props.onUpdateVotes('down',props.id)} style={voteIcon} className="fas fa-arrow-alt-circle-down"></i>
 					<p>{props.down}</p>
 				</div>
