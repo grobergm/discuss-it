@@ -29,7 +29,6 @@ function Post(props){
 			</div>
 			<div>
 				<h1>{props.title}</h1>
-				<p>{props.id}</p>
 				<p style={{textAlign:'justify'}}>{props.content}</p>
 			</div>
 		</div>
@@ -42,6 +41,7 @@ Post.propTypes={
 	content:PropTypes.string.isRequired,
 	up:PropTypes.number.isRequired,
 	down:PropTypes.number.isRequired,
+	score: PropTypes.number.isRequired,
 	onUpdateVotes: PropTypes.func.isRequired
 }
 

@@ -3,6 +3,7 @@ import Post from './Post';
 import PropTypes from 'prop-types';
 
 function PostList(props){
+	
 	return(
 		<div>
 			{
@@ -14,6 +15,7 @@ function PostList(props){
 						content={post.content}
 						up={post.up}
 						down={post.down}
+						score={post.score}
 						onUpdateVotes={props.onUpdateVotes}
 						key={index}
 					 />

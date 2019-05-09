@@ -6,7 +6,7 @@ class App extends Component{
   constructor(){
     super();
     this.state={
-      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10}],
+      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10, score:90}],
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);
@@ -24,13 +24,20 @@ class App extends Component{
     this.setState({posts:newPosts})
   }
 
+  sortPosts(posts){
+    return posts.sort((postA,postB)=>{
+     return postB.score-postA.score
+    });
+  }
   handleUpdateVotes(vote,id){
     let newPosts=this.state.posts.slice();
     const selectIndex=newPosts.findIndex(post=>{
       return post.id===id;
     });
-    newPosts[selectIndex][vote]++
-    this.setState({posts:newPosts});
+    newPosts[selectIndex][vote]++;
+    newPosts[selectIndex].score=newPosts[selectIndex].up-newPosts[selectIndex].down;
+    let sortedPosts=this.sortPosts(newPosts);
+    this.setState({posts:sortedPosts});
   }
 
   render(){
@@ -46,8 +53,7 @@ class App extends Component{
           onAddNewPost={this.handleAddNewPost} />
         <PostList 
           posts={this.state.posts}
-          onUpdateVotes={this.handleUpdateVotes}
-         />
+          onUpdateVotes={this.handleUpdateVotes} />
       </div>
     );
   }
