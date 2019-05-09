@@ -19,8 +19,11 @@ class App extends Component{
   }
 
   render(){
+    const layout={
+      margin:'0 25%'
+    }
     return (
-      <div>
+      <div style={layout}>
         <h1> Discuss-It! </h1>
         <NewPost 
           isOpen={this.state.newPostFormOpen}
