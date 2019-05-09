@@ -6,11 +6,12 @@ class App extends Component{
   constructor(){
     super();
     this.state={
-      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',upVotes:100, downVotes:10}],
+      posts:[{id:'alsdjsaodijsaod',title:"Test Post", content:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',up:100, down:10}],
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);
     this.handleOpenNewPostForm=this.handleOpenNewPostForm.bind(this);
+    this.handleUpdateVotes=this.handleUpdateVotes.bind(this);
   }
 
   handleOpenNewPostForm(){
@@ -21,6 +22,15 @@ class App extends Component{
     const newPosts=this.state.posts.slice();
     newPosts.unshift(newPost);
     this.setState({posts:newPosts})
+  }
+
+  handleUpdateVotes(vote,id){
+    let newPosts=this.state.posts.slice();
+    const selectIndex=newPosts.findIndex(post=>{
+      return post.id===id;
+    });
+    newPosts[selectIndex][vote]++
+    this.setState({posts:newPosts});
   }
 
   render(){
@@ -34,7 +44,10 @@ class App extends Component{
           isOpen={this.state.newPostFormOpen}
           onOpenNewPostForm={this.handleOpenNewPostForm}
           onAddNewPost={this.handleAddNewPost} />
-        <PostList posts={this.state.posts} />
+        <PostList 
+          posts={this.state.posts}
+          onUpdateVotes={this.handleUpdateVotes}
+         />
       </div>
     );
   }

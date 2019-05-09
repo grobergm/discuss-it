@@ -12,8 +12,9 @@ function PostList(props){
 						id={post.id}
 						title={post.title}
 						content={post.content}
-						upVotes={post.upVotes}
-						downVotes={post.downVotes}
+						up={post.up}
+						down={post.down}
+						onUpdateVotes={props.onUpdateVotes}
 						key={index}
 					 />
 					)
@@ -24,7 +25,8 @@ function PostList(props){
 };
 
 PostList.propTypes={
-	posts: PropTypes.array
+	posts: PropTypes.array.isRequired,
+	onUpdateVotes: PropTypes.func.isRequired
 }
 
 export default PostList;
