@@ -14,14 +14,40 @@ function NewPost(props){
 		_content.value='';
 	}
 
-	;
 	const formStyle={
 		display:'flex',
 		flexDirection:'column',
+		transition:'transform 0.5s',
+		position:'relative'
 	}
+
+	const topBar={
+		backgroundColor:'lightgray',
+		display:'flex',
+		alignItems:'center',
+		paddingLeft:'1rem',
+		position:'relative',
+		zIndex:'1'
+	}
+
+	const openCloseIcon={
+		backgroundColor:props.isOpen?'red':'green',
+		fontSize:'1.5rem',
+		width:'2rem',
+		padding:'0.25rem',
+		marginLeft:'auto'
+	}
+
+
 	return(
-		<div>
-			<form style={formStyle} onSubmit={handleNewPostSubmission}>
+		<div style={{overflow:'hidden'}}>
+			<div style={topBar} onClick={props.onOpenNewPostForm}>
+				<p>{props.isOpen ? '':'Add New Post'}</p>
+				<div style={openCloseIcon}>
+					<i style={{transition:'transform 0.5s', padding:'auto auto'}} className={`fas fa-times ${!props.isOpen ? 'open-new-post' :''}`}></i>
+				</div>
+			</div>
+			<form className={!props.isOpen ? 'slide-up':''} style={formStyle} onSubmit={handleNewPostSubmission}>
 				<input
 					type='text'
 					id='title'

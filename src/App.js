@@ -10,6 +10,11 @@ class App extends Component{
       newPostFormOpen:false
     }
     this.handleAddNewPost=this.handleAddNewPost.bind(this);
+    this.handleOpenNewPostForm=this.handleOpenNewPostForm.bind(this);
+  }
+
+  handleOpenNewPostForm(){
+    this.state.newPostFormOpen ? this.setState({newPostFormOpen:false}) : this.setState({newPostFormOpen:true});
   }
 
   handleAddNewPost(newPost){
@@ -27,6 +32,7 @@ class App extends Component{
         <h1> Discuss-It! </h1>
         <NewPost 
           isOpen={this.state.newPostFormOpen}
+          onOpenNewPostForm={this.handleOpenNewPostForm}
           onAddNewPost={this.handleAddNewPost} />
         <PostList posts={this.state.posts} />
       </div>
