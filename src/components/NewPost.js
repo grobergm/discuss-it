@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-
+import {v4} from "uuid"
 
 function NewPost(props){
 
@@ -9,7 +9,7 @@ function NewPost(props){
 
 	function handleNewPostSubmission(event){
 		event.preventDefault();
-		props.onAddNewPost({title:_title.value, content:_content.value,upVotes:0,downVotes:0})
+		props.onAddNewPost({id:v4(),title:_title.value, content:_content.value,upVotes:0,downVotes:0})
 		_title.value='';
 		_content.value='';
 	}

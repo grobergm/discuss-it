@@ -9,6 +9,7 @@ function PostList(props){
 				props.posts.map((post,index)=>{
 					return (
 					<Post
+						id={post.id}
 						title={post.title}
 						content={post.content}
 						upVotes={post.upVotes}

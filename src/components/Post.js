@@ -29,6 +29,7 @@ function Post(props){
 			</div>
 			<div>
 				<h1>{props.title}</h1>
+				<p>{props.id}</p>
 				<p style={{textAlign:'justify'}}>{props.content}</p>
 			</div>
 		</div>
@@ -36,6 +37,7 @@ function Post(props){
 }
 
 Post.propTypes={
+	id:PropTypes.string.isRequired,
 	title:PropTypes.string.isRequired,
 	content:PropTypes.string.isRequired,
 	upVotes:PropTypes.number.isRequired,
